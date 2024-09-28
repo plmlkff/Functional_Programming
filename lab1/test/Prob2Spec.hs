@@ -7,10 +7,10 @@ import Test.Hspec
 import Prob2
 
 correctResult :: Int
-correctResult = 10
+correctResult = 11
 
 testValue :: Int
-testValue = 1000000
+testValue = 4000000
 
 prob2Spec :: Spec
 prob2Spec = do

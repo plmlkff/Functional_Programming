@@ -27,7 +27,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        final int maxFib = 1_000_000, limitA = 100, limitB = 100;
+        final int maxFib = 4_000_000, limitA = 100, limitB = 100;
 
         System.out.printf("Problem 2: %s\n", countEvenFibs(maxFib));
         System.out.printf("Problem 29: %s\n", countPowers(limitA, limitB));
