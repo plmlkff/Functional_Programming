@@ -23,22 +23,9 @@ jobs:
         path: lab1/src/
         fail-on: warning
 
-  build:
-    name: build
-    needs: hlint
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-haskell@v1
-      with:
-        ghc-version: '8.10.3'
-        cabal-version: '3.2'
-        stack-version: 'latest'
-    - run: cd ./lab1 && stack --no-terminal build --fast
-
   test:
     name: Test
-    needs: build
+    needs: hlint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
