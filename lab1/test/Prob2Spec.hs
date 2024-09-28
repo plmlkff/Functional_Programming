@@ -18,4 +18,4 @@ prob2Spec = do
     it "Recursive implementation with basic syntax" $ do
        countEvenNumbers testValue `shouldBe` correctResult
     it "Tail recursive implementation with filtering, mapping and infinit lists" $ do
-       countEvenNumbers testValue `shouldBe` correctResult
+       countEvenNumbersTail testValue `shouldBe` correctResult

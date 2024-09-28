@@ -5,19 +5,18 @@ import java.util.List;
 import java.util.Set;
 
 public class Main {
-    private static List<Integer> generateFibs(int maxFib){
-        int prev = 1, current = 2;
-        List<Integer> fibs = new ArrayList<>(List.of(prev, current));
-        while (current <= maxFib){
-            int sum = prev + current;
-            fibs.add(sum);
+    private static int countEvenFibs(int maxFib) {
+        int prev = 1, current = 2, newFib;
+        List<Integer> evenFibs = new ArrayList<>(List.of(current));
+        while ( (newFib = prev + current) <= maxFib) {
+            if (newFib % 2 == 0) evenFibs.add(newFib);
             prev = current;
-            current = sum;
+            current = newFib;
         }
-        return fibs;
+        return evenFibs.size();
     }
 
-    private static int countPowers(int limitA, int limitB){
+    private static int countPowers(int limitA, int limitB) {
         Set<BigInteger> powers = new HashSet<>();
         for (int i = 2; i <= limitA; i++) {
             for (int j = 2; j <= limitB; j++) {
@@ -30,8 +29,7 @@ public class Main {
     public static void main(String[] args) {
         final int maxFib = 1_000_000, limitA = 100, limitB = 100;
 
-        int evenFibsCount = (int)generateFibs(maxFib).stream().filter(x->x%2==0).count();
-        System.out.printf("Problem 2: %s\n", evenFibsCount);
+        System.out.printf("Problem 2: %s\n", countEvenFibs(maxFib));
         System.out.printf("Problem 29: %s\n", countPowers(limitA, limitB));
     }
 }
