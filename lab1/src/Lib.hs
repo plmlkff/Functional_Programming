@@ -7,4 +7,4 @@ import Prob2
 
 
 someFunc :: IO ()
-someFunc = print (countEvenNumbers 1000000)
+someFunc = print (countDistinctPowersTailRecursive 100 100)

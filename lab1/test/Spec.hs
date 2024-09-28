@@ -1,2 +1,8 @@
+import Prob2Spec
+import Prob29Spec
+import Test.Hspec
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = do
+    hspec prob2Spec
+    hspec prob29Spec

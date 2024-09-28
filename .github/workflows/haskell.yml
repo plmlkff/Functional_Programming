@@ -10,10 +10,23 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  hlint:
+    name: Run lint
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: 'Set up HLint'
+      uses: haskell-actions/hlint-setup@v2
+    - name: 'Run HLint'
+      uses: haskell-actions/hlint-run@v2
+      with:
+        path: lab1/src/
+        fail-on: warning
 
+  build:
+    name: build
+    needs: hlint
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-haskell@v1
@@ -21,23 +34,11 @@ jobs:
         ghc-version: '8.10.3'
         cabal-version: '3.2'
         stack-version: 'latest'
-    - run: stack --no-terminal build --fast
-  hlint:
-    name: Run lint
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+    - run: cd ./lab1 && stack --no-terminal build --fast
 
-    - name: 'Set up HLint'
-      uses: haskell-actions/hlint-setup@v2
-
-    - name: 'Run HLint'
-      uses: haskell-actions/hlint-run@v2
-      with:
-        path: src/
-        fail-on: warning
   test:
     name: Test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,4 +47,4 @@ jobs:
           ghc-version: '9.6.6'
           enable-stack: true
           stack-version: 'latest'
-      - run: stack --no-terminal test --fast
+      - run: cd ./lab1 && stack --no-terminal test --fast
