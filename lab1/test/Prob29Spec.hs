@@ -6,13 +6,14 @@ module Prob29Spec
 import Test.Hspec
 import Prob29
 
-correctResult :: Int
-correctResult = 6413
 
-testLimitA :: Int
+correctResult :: Integer
+correctResult = 9183
+
+testLimitA :: Integer
 testLimitA = 100
 
-testLimitB :: Int
+testLimitB :: Integer
 testLimitB = 100
 
 prob29Spec :: Spec
